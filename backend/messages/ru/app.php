@@ -274,4 +274,14 @@ return [
     'Project' => 'Проект',
     'Projects' => 'Проекты',
     'Create Project' => 'Добавить проект',
+
+    'Chemical ID' => 'Препарат',
+    'Chemical' => 'Препарат',
+    'Chemicals' => 'Препараты',
+    'Create Chemical' => 'Добавить препарат',
+
+    'Ingredient ID' => 'Действующее вещество',
+    'Ingredient' => 'Действующее вещество',
+    'Ingredients' => 'Действующие вещества',
+    'Create Ingredient' => 'Добавить действующее вещество',
 ];

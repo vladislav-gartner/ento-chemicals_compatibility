@@ -42,6 +42,8 @@ use kartik\icons\Icon;
                 'items' => MenuHelper::merge([
                     ['label' => Yii::t('app','Management'), 'options' => ['class' => 'header']],
 
+                    ['label' => Yii::t('app','Chemicals'), 'icon' => 'icofont icofont-medicine', 'url' => ['/chemical/index']],
+                    ['label' => Yii::t('app','Ingredients'), 'icon' => 'icofont icofont-laboratory', 'url' => ['/ingredient/index']],
 
                 ], $menus)
             ]

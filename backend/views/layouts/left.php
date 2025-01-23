@@ -44,6 +44,10 @@ use kartik\icons\Icon;
 
                     ['label' => Yii::t('app','Chemicals'), 'icon' => 'icofont icofont-medicine', 'url' => ['/chemical/index']],
                     ['label' => Yii::t('app','Ingredients'), 'icon' => 'icofont icofont-laboratory', 'url' => ['/ingredient/index']],
+                    ['label' => Yii::t('app','Entomophages'), 'icon' => 'icofont icofont-bug', 'url' => ['/entomophage/index']],
+
+                    ['label' => Yii::t('app','Lookups'), 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app','Matches'), 'icon' => 'icofont icofont-match-review', 'url' => ['/match/index']],
 
                 ], $menus)
             ]

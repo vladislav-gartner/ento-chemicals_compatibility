@@ -284,4 +284,14 @@ return [
     'Ingredient' => 'Действующее вещество',
     'Ingredients' => 'Действующие вещества',
     'Create Ingredient' => 'Добавить действующее вещество',
+
+    'Entomophage ID' => 'Энтомофаг',
+    'Entomophage' => 'Энтомофаг',
+    'Entomophages' => 'Энтомофаги',
+    'Create Entomophage' => 'Добавить энтомофага',
+
+    'Match ID' => 'Совместимость',
+    'Match' => 'Совместимость',
+    'Matches' => 'Совместимости',
+    'Create Match' => 'Добавить совместимость',
 ];

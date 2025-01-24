@@ -5,19 +5,34 @@ namespace core\services\chemical;
 use core\entities\Chemical\Chemical;
 use core\forms\chemical\ChemicalForm;
 use core\repositories\chemical\ChemicalRepository;
+use core\repositories\ingredient\IngredientRepository;
+use core\services\TransactionManager;
 
 class ChemicalService
 {
     /** @var ChemicalRepository */
     protected $chemicals;
 
+    /** @var IngredientRepository */
+    protected $ingredients;
+
+    /** @var TransactionManager */
+    protected $transaction;
+
     /**
      * ChemicalService constructor
      * @var ChemicalRepository
+     * @var IngredientRepository
+     * @var TransactionManager
      */
-    public function __construct(ChemicalRepository $chemicals)
-    {
+    public function __construct(
+        ChemicalRepository $chemicals,
+        IngredientRepository $ingredients,
+        TransactionManager $transaction
+    ) {
         $this->chemicals = $chemicals;
+        $this->ingredients = $ingredients;
+        $this->transaction = $transaction;
     }
 
     public function find($id): ?Chemical
@@ -39,7 +54,12 @@ class ChemicalService
             $form->name,
             $form->status
         );
-        $this->chemicals->save($chemical);
+
+        $this->bindIngredients($form, $chemical);
+
+        $this->transaction->wrap(function () use ($form, $chemical) {
+            $this->chemicals->save($chemical);
+        });
         return $chemical;
     }
 
@@ -50,7 +70,16 @@ class ChemicalService
             $form->name,
             $form->status
         );
-        $this->chemicals->save($chemical);
+
+        $this->transaction->wrap(function () use ($form, $chemical) {
+
+            $chemical->revokeIngredients();
+            $this->chemicals->save($chemical);
+
+            $this->bindIngredients($form, $chemical);
+
+            $this->chemicals->save($chemical);
+        });
     }
 
     public function remove($id): void
@@ -90,5 +119,13 @@ class ChemicalService
     public function getRepository(): ChemicalRepository
     {
         return $this->chemicals;
+    }
+
+    public function bindIngredients(ChemicalForm $form, Chemical $chemical)
+    {
+        foreach ($form->ingredients->existing as $id) {
+            $ingredient = $this->ingredients->get($id);
+            $chemical->assignIngredient($ingredient->id);
+        };
     }
 }

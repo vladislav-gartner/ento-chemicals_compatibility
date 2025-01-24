@@ -5,8 +5,13 @@ namespace core\forms\Chemical;
 use Yii;
 use core\entities\Chemical\Chemical;
 use core\entities\Chemical\ChemicalQuery;
+use core\forms\Ingredient\ChemicalIngredientForm;
+use yii\helpers\ArrayHelper;
 
-class ChemicalForm extends Yii\base\Model
+/**
+ * @property ChemicalIngredientForm $ingredients
+ */
+class ChemicalForm extends \core\forms\CompositeForm
 {
     public $name;
     public $status;
@@ -21,8 +26,9 @@ class ChemicalForm extends Yii\base\Model
         if ($chemical) {
             $this->name = $chemical->name;
             $this->status = $chemical->status;
+            $this->ingredients = new ChemicalIngredientForm($chemical);
         } else {
-
+            $this->ingredients = new ChemicalIngredientForm();
         }
 
         $this->_chemical = $chemical;
@@ -66,5 +72,10 @@ class ChemicalForm extends Yii\base\Model
     public function dataModel(): ?Chemical
     {
         return $this->_chemical;
+    }
+
+    public function internalForms(): array
+    {
+        return ['ingredients'];
     }
 }

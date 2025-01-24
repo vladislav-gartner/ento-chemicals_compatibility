@@ -79,6 +79,7 @@ return [
     'Lat' => 'Широта',
     'Lon' => 'Долгота',
     'Timezone' => 'Часовой пояс',
+    'Lookups' => 'Справочники',
 
     'First Name' => 'Имя',
     'Enter your name' => 'Укажите ваше имя',
@@ -280,6 +281,7 @@ return [
     'Chemicals' => 'Препараты',
     'Create Chemical' => 'Добавить препарат',
 
+    'Existing Ingredient' => 'Прикрепленные вещества',
     'Ingredient ID' => 'Действующее вещество',
     'Ingredient' => 'Действующее вещество',
     'Ingredients' => 'Действующие вещества',
@@ -294,4 +296,9 @@ return [
     'Match' => 'Совместимость',
     'Matches' => 'Совместимости',
     'Create Match' => 'Добавить совместимость',
+
+    'Chemical Ingredient Assignment ID' => 'Препарат - вещество',
+    'Chemical Ingredient Assignment' => 'Препарат - вещество',
+    'Chemical Ingredient Assignments' => 'Препараты - вещества',
+    'Create Chemical Ingredient Assignment' => 'Привязать вещество к препарату',
 ];

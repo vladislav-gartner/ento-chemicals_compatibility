@@ -292,13 +292,18 @@ return [
     'Entomophages' => 'Энтомофаги',
     'Create Entomophage' => 'Добавить энтомофага',
 
-    'Match ID' => 'Совместимость',
-    'Match' => 'Совместимость',
-    'Matches' => 'Совместимости',
-    'Create Match' => 'Добавить совместимость',
+    'Match ID' => 'Тип совместимости',
+    'Match' => 'Тип совместимости',
+    'Matches' => 'Типы совместимостей',
+    'Create Match' => 'Добавить тип совместимости',
 
     'Chemical Ingredient Assignment ID' => 'Препарат - вещество',
     'Chemical Ingredient Assignment' => 'Препарат - вещество',
     'Chemical Ingredient Assignments' => 'Препараты - вещества',
     'Create Chemical Ingredient Assignment' => 'Привязать вещество к препарату',
+
+    'Chemical Entomophage Match ID' => 'Совместимость',
+    'Chemical Entomophage Match' => 'Совместимость',
+    'Chemical Entomophage Matches' => 'Совместимости',
+    'Create Chemical Entomophage Match' => 'Добавить совместимость',
 ];

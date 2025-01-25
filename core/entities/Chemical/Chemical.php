@@ -5,6 +5,8 @@ namespace core\entities\Chemical;
 use Yii;
 use core\entities\Ingredient\Ingredient;
 use core\entities\Ingredient\IngredientQuery;
+use core\entities\Match\ChemicalEntomophageMatch;
+use core\entities\Match\ChemicalEntomophageMatchQuery;
 use core\traits\ModelTrait;
 use yii\db\ActiveRecord;
 
@@ -15,6 +17,7 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property int $status
  *
+ * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
  * @property ChemicalIngredientAssignment[] $chemicalIngredientAssignments
  * @property Ingredient[] $ingredients
  */
@@ -67,6 +70,11 @@ class Chemical extends ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'status' => Yii::t('app', 'Status'),
         ];
+    }
+
+    public function getChemicalEntomophageMatches()
+    {
+        return $this->hasMany(ChemicalEntomophageMatch::className(), ['chemical_id' => 'id']);
     }
 
     public function getChemicalIngredientAssignments()

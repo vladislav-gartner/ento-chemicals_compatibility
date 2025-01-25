@@ -3,6 +3,8 @@
 namespace core\entities\Entomophage;
 
 use Yii;
+use core\entities\Match\ChemicalEntomophageMatch;
+use core\entities\Match\ChemicalEntomophageMatchQuery;
 use core\traits\ModelTrait;
 use yii\db\ActiveRecord;
 
@@ -12,6 +14,8 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property string $name
  * @property int $status
+ *
+ * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
  */
 class Entomophage extends ActiveRecord
 {
@@ -52,6 +56,11 @@ class Entomophage extends ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'status' => Yii::t('app', 'Status'),
         ];
+    }
+
+    public function getChemicalEntomophageMatches()
+    {
+        return $this->hasMany(ChemicalEntomophageMatch::className(), ['entomophage_id' => 'id']);
     }
 
     public static function find(): EntomophageQuery

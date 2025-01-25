@@ -45,12 +45,13 @@ use kartik\icons\Icon;
                     ['label' => Yii::t('app','Chemicals'), 'icon' => 'icofont icofont-medicine', 'url' => ['/chemical/index']],
                     ['label' => Yii::t('app','Ingredients'), 'icon' => 'icofont icofont-laboratory', 'url' => ['/ingredient/index']],
                     ['label' => Yii::t('app','Chemical Ingredient Assignments'), 'icon' => 'icofont icofont-ui-social-link', 'url' => ['/chemical-ingredient-assignment/index']],
+                    ['label' => Yii::t('app','Chemical Entomophage Matches'), 'icon' => 'icofont icofont-match-review', 'url' => ['/chemical-entomophage-match/index']],
 
                     ['label' => Yii::t('app','Entomophages'), 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app','Entomophages'), 'icon' => 'icofont icofont-bug', 'url' => ['/entomophage/index']],
 
                     ['label' => Yii::t('app','Lookups'), 'options' => ['class' => 'header']],
-                    ['label' => Yii::t('app','Matches'), 'icon' => 'icofont icofont-match-review', 'url' => ['/match/index']],
+                    ['label' => Yii::t('app','Matches'), 'icon' => 'fa fa-book', 'url' => ['/match/index']],
 
                 ], $menus)
             ]

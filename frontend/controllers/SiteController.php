@@ -1,42 +1,44 @@
 <?php
 namespace frontend\controllers;
 
+use core\entities\User\User;
+use Yii;
 use yii\web\Controller;
 
-/**
- * Site controller
- */
+
 class SiteController extends Controller
 {
     /**
+     * @var User
+     */
+    private $currentUser;
+
+    /**
      * @inheritdoc
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
 
-    /**
-     * @return mixed
-     */
-    public function actionIndex()
+    public function __construct($id, $module, $config = [])
     {
-        return $this->render('index');
+        parent::__construct($id, $module, $config);
+
+        if (!Yii::$app->user->isGuest){
+            $this->currentUser = Yii::$app->user->identity->getUser();
+        }
     }
 
-    /**
-     * @return mixed
-     */
-    public function actionAbout()
+    public function actionIndex(): string
     {
-        return $this->render('about');
+        if (!$this->currentUser){
+            $this->view->params['addClass'] = 'sidebar-collapse';
+        }
+        return $this->render('index', []);
     }
 }

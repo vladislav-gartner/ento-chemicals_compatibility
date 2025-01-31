@@ -15,6 +15,7 @@ class AuthController extends Controller
     {
         parent::__construct($id, $module, $config);
         $this->service = $service;
+        $this->view->params['addClass'] = 'sidebar-collapse';
     }
 
     /**

@@ -1,49 +1,75 @@
 <?php
+use yii\helpers\Html;
 
-/* @var $this View */
+/* @var $this \yii\web\View */
 /* @var $content string */
 
-use frontend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\web\View;
+$addClass = $this->params['addClass'] ? $this->params['addClass'] : '';
 
-AppAsset::register($this);
+frontend\assets\AppAsset::register($this);
+dmstr\web\AdminLteAsset::register($this);
 
-\kartik\icons\IcoFontAsset::register($this);
+$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
+
+$user = null;
+if (!Yii::$app->user->isGuest){
+    /** @var User $user */
+    $user = Yii::$app->user->identity->getUser();
+}
 
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
+    <meta charset="<?= Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="/fonts/fonts.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/shortcodes.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="shortcut icon" href="/images/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="/images/favicon.png">
-    <link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <?php $this->registerCsrfMetaTags() ?>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <?php $this->head() ?>
+<?php $this->head() ?>
+
 </head>
-<body>
+
+<!-- ADD THE CLASS layout-boxed TO GET A BOXED LAYOUT -->
+<body class="hold-transition layout-fixed sidebar-mini skin-green-light <?= $addClass ?>">
 <?php $this->beginBody() ?>
 
-<?= $this->render('_top'); ?>
-<?= $this->render('_mobile_menu_popup'); ?>
-<?= $this->render('_header'); ?>
+<!-- Site wrapper -->
+<div class="wrapper">
 
-<?= $content ?>
+    <?= $this->render(
+        'header.php',
+        ['directoryAsset' => $directoryAsset]
+    ) ?>
 
-<?= $this->render('_footer'); ?>
-<?= $this->render('_script'); ?>
+    <?php if ($user): ?>
+
+        <?= $this->render(
+            'left.php',
+            ['directoryAsset' => $directoryAsset]
+        ) ?>
+
+    <?php endif; ?>
+
+    <?= $this->render(
+        'content.php',
+        ['content' => $content, 'directoryAsset' => $directoryAsset]
+    ) ?>
+
+</div>
+<!-- ./wrapper -->
+
 <?php $this->endBody() ?>
 </body>
 </html>

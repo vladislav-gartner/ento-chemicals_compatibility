@@ -8,50 +8,48 @@ use frontend\widgets\BreadcrumbWidget;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = Yii::t('app','Login');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = '';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<?= BreadcrumbWidget::widget([]) ?>
-
 <section class="account-section">
     <div class="tf-container">
         <div class="row">
-            <div class="wd-form-login pb-5">
+            <div class="col-md-12">
 
-                <h4><?= Html::encode($this->title) ?></h4>
-
-                <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <div class="ip">
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-                </div>
-                <div class="ip">
-                    <?= $form->field($model, 'password', [
-                        'inputTemplate' => '<div class="inputs-group auth-pass-inputgroup">{input}<a class="icon-eye-off password-addon"></a></div>',
-                    ])->passwordInput([
-                        'class' => 'input-form password-input'
-                    ]) ?>
-                </div>
-
-                <div class="group-ant-choice">
-                    <div class="sub-ip">
-                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                <div class="login-box">
+                    <div class="login-logo">
+                        <a href="#"><b>B</b> TECHNOLOGY</a>
                     </div>
-                    <?= Html::a(Yii::t('auth','Forgot password?'), ['auth/reset/request'], ['class' => 'forgot']) ?>
+
+                    <div class="login-box-body">
+                        <p class="login-box-msg"><?=Yii::t('app','Enter the login and password')?></p>
+
+                        <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
+                        <?= $form->field($model, 'username')->label(false)
+                            ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('login')]) ?>
+
+                        <?= $form->field($model, 'password', [
+                            'options' => ['class' => 'form-group has-feedback'],
+                            'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+                        ])
+                            ->label(false)
+                            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+                        <div class="form-group">
+                            <?= Html::submitButton(Yii::t('app','Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        </div>
+
+                        <?= Html::a(Yii::t('auth','Forgot password?'), ['auth/reset/request'], ['class' => 'forgot']) ?>
+
+                        <?= Html::a(Yii::t('auth','Signup'), ['auth/signup/request'], ['class' => 'forgot pull-right']) ?>
+                        <?php ActiveForm::end(); ?>
+
+                    </div>
+
                 </div>
-
-                <p class="line-ip"><span><?=Yii::t('auth','or sign up with')?></span></p>
-
-                <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['auth/network/auth']
-                ]); ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app','Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-                <?php ActiveForm::end(); ?>
 
             </div>
         </div>

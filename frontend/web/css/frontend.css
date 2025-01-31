@@ -1,0 +1,104 @@
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+@media (min-width: 768px){
+    .navbar-custom-menu .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    #navbar-collapse .btn{
+        border: 0 solid transparent;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-custom-menu .navbar-nav>li>a {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        line-height: 20px
+    }
+}
+
+.tf-container .row .btn-block{
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.tf-container .row .label.col-md-12{
+    margin-bottom: 3px;
+}
+
+.icofont {
+    margin-right: 5px;
+}
+
+span.button-panel{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin: 0 0 10px;
+}
+
+.modal-body .box-header, .modal-body .box-body{
+    padding: 0;
+}
+
+.modal-body .box, .modal-body .box-header.with-border{
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.box .box-header.with-border H4{
+    margin: 0 !important;
+}
+
+.box.box-wrapper{
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+.box.box-wrapper .box-body{
+    padding: 0 !important;
+}
+
+.box > .label {
+    display: inline-block;
+    margin: 3px;
+}
+
+.request-view .file-drop-zone{
+    min-height: auto !important;
+}
+
+.request-view .file-drop-zone-title{
+    padding: 30px 10px !important;
+}
+
+.file-preview-frame.krajee-default.kv-preview-thumb .kv-file-content {
+    width: 84px;
+    height: auto;
+}
+
+.krajee-default .file-caption-info, .krajee-default .file-size-info{
+    width: 90px;
+}
+.krajee-default.file-preview-frame .file-thumbnail-footer{
+    width: 90px;
+}
+
+.file-thumbnail-footer {
+
+}
+
+.file-footer-caption{
+    margin-bottom: auto !important;
+}

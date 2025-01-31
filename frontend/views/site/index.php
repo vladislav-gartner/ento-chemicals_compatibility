@@ -2,23 +2,26 @@
 
 /* @var $this yii\web\View */
 
+use core\entities\User\User;
 use frontend\widgets\BreadcrumbWidget;
+use insolita\wgadminlte\LteConst;
+use insolita\wgadminlte\LteSmallBox;
+use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+if (!Yii::$app->user->isGuest) {
+    /** @var User $user */
+    $user = Yii::$app->user->identity->getUser();
+}
+
+$this->title = '';
 ?>
 <?= BreadcrumbWidget::widget([]) ?>
-
 <section class="account-section">
     <div class="tf-container">
         <div class="row">
-
-            <div class="wd-form-login pb-5">
-
-                <h2 class="mb-5">Поздравляем!</h2>
-                <p class="lead mb-5">Вы успешно подняли веб приложение на базе сборки "SV5KIT" (Yii2 Framework) .</p>
+            <div class="col-md-12">
 
             </div>
-
         </div>
     </div>
 </section>

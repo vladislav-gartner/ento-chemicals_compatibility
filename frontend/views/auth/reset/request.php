@@ -17,19 +17,19 @@ $this->title = '';
 
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href="#"><b>B</b> TECHNOLOGY</a>
+                        <img src="/img/logo_xs.webp" width="100px">
                     </div>
 
                     <div class="login-box-body">
-                        <p class="login-box-msg">
+                        <h4 class="login-box-msg">
                             <?=Yii::t('auth','Please fill out your email. A link to reset password will be sent there.')?>
-                        </p>
+                        </h4>
 
                         <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
                         <?= $form->field($model, 'email')->label(false)->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('email')]) ?>
 
-                        <?= Html::submitButton(Yii::t('app','Send'), ['class' => 'btn btn-primary']) ?>
+                        <?= Html::submitButton(Yii::t('app','Send'), ['class' => 'btn btn-success full-width-btn']) ?>
                         <?php ActiveForm::end(); ?>
 
                     </div>

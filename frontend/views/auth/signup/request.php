@@ -18,11 +18,11 @@ $this->title = '';
 
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href="#"><b>B</b> TECHNOLOGY</a>
+                        <img src="/img/logo_xs.webp" width="100px">
                     </div>
 
                     <div class="login-box-body">
-                        <p class="login-box-msg"><?=Yii::t('app','Signup')?></p>
+                        <h4 class="login-box-msg"><?=Yii::t('app','Signup')?></h4>
 
                         <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
@@ -45,7 +45,7 @@ $this->title = '';
                                 ->label(false)
                                 ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-                            <?= Html::submitButton(Yii::t('auth','Signup'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                            <?= Html::submitButton(Yii::t('auth','Signup'), ['class' => 'btn btn-success full-width-btn', 'name' => 'signup-button']) ?>
 
                         <?php ActiveForm::end(); ?>
 

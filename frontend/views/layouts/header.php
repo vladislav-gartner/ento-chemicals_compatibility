@@ -20,26 +20,16 @@ if (!Yii::$app->user->isGuest) {
 ?>
 <header class="main-header">
 
-    <a href="/" class="logo">
-        <span class="logo-mini"><b>B</b>T</span>
-        <span class="logo-lg"><b>B Technology</b></span>
-    </a>
-
     <nav class="navbar navbar-static-top">
 
-        <?php if (!Yii::$app->user->isGuest): ?>
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
-        <?php endif ?>
-
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 
                 <?php
                 $menuItems = [
                     ['label' => Yii::t('app','Home'), 'url' => ['/site/index']],
+                    ['label' => Yii::t('app','Compares'), 'url' => ['/compare/index']],
                 ];
                 if (Yii::$app->user->isGuest) {
                     $menuItems[] = ['label' => Yii::t('auth','Signup'), 'url' => ['/auth/signup/request']];

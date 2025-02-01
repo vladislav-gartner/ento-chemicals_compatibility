@@ -2,6 +2,8 @@
 
 namespace core\forms;
 
+use core\entities\User\User;
+use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
@@ -14,9 +16,13 @@ abstract class CompositeForm extends Model
 
     abstract protected function internalForms(): array;
 
-    public function load($data, $formName = null): bool
+    public function load($data, $formName = null, $overrideParent = false): bool
     {
         $success = parent::load($data, $formName);
+        if ($overrideParent){
+            $success = true;
+        }
+
         foreach ($this->forms as $name => $form) {
             if (is_array($form)) {
                 $success = Model::loadMultiple($form, $data, $formName === null ? null : $name) && $success;
@@ -105,5 +111,13 @@ abstract class CompositeForm extends Model
     public function __isset($name)
     {
         return isset($this->forms[$name]) || parent::__isset($name);
+    }
+
+    public function currentUser(): ?User
+    {
+        if (!Yii::$app->user->isGuest){
+            return Yii::$app->user->identity->getUser();
+        }
+        return null;
     }
 }

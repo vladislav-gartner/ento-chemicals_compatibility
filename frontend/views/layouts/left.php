@@ -48,9 +48,10 @@ $type = $user->hasRole('child') ? 'child' : 'other';
             [
                 'options' => ['class' => 'sidebar-menu', 'iconClassPrefix' => ''],
                 'items' => [
-                    ['label' => Yii::t('app','Администрирование'), 'options' => ['class' => 'header']],
 
-                    ['label' => Yii::t('app','Requests'), 'icon' => 'icofont icofont-tasks', 'url' => ['/request/index']],
+                    ['label' => Yii::t('app','Compares'), 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app','Compares'), 'icon' => 'fa fa-balance-scale', 'url' => ['/compare/index']],
+
                 ],
             ]
         ) ?>

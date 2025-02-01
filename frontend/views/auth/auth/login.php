@@ -18,11 +18,11 @@ $this->title = '';
 
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href="#"><b>B</b> TECHNOLOGY</a>
+                        <img src="/img/logo_xs.webp" width="100px">
                     </div>
 
                     <div class="login-box-body">
-                        <p class="login-box-msg"><?=Yii::t('app','Enter the login and password')?></p>
+                        <h4 class="login-box-msg"><?=Yii::t('app','Enter the login and password')?></h4>
 
                         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
@@ -39,7 +39,7 @@ $this->title = '';
                         <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton(Yii::t('app','Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                            <?= Html::submitButton(Yii::t('app','Login'), ['class' => 'btn btn-success full-width-btn', 'name' => 'login-button']) ?>
                         </div>
 
                         <?= Html::a(Yii::t('auth','Forgot password?'), ['auth/reset/request'], ['class' => 'forgot']) ?>

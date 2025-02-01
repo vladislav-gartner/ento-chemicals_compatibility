@@ -4,6 +4,8 @@ namespace core\entities\Ingredient;
 
 use Yii;
 use core\entities\Chemical\Chemical;
+use core\entities\Chemical\ChemicalIngredientAssignment;
+use core\entities\Chemical\ChemicalIngredientAssignmentQuery;
 use core\entities\Chemical\ChemicalQuery;
 use core\traits\ModelTrait;
 use yii\db\ActiveRecord;

@@ -63,5 +63,15 @@ return [
             return Yii::$app->get('frontendUrlManager');
         },
     ],
+    'as access' => [
+        'class' => 'yii\filters\AccessControl',
+        'except' => ['auth/auth/login', 'auth/reset/request', 'auth/reset/confirm', 'auth/signup/request', 'site/error', 'compar/index'],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['user', 'admin', 'manager'],
+            ],
+        ],
+    ],
     'params' => $params,
 ];

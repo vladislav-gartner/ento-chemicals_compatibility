@@ -306,4 +306,21 @@ return [
     'Chemical Entomophage Match' => 'Совместимость',
     'Chemical Entomophage Matches' => 'Совместимости',
     'Create Chemical Entomophage Match' => 'Добавить совместимость',
+
+    'Existing Chemical' => 'Прикрепленные препараты',
+    'Existing Entomophage' => 'Прикрепленные энтомофаги',
+    'Compare ID' => 'Сравнение',
+    'Compare' => 'Сравнение',
+    'Compares' => 'Сравнения',
+    'Create Compare' => 'Добавить сравнение',
+
+    'Compare Chemical Assignment ID' => 'Сравнение - Препарат',
+    'Compare Chemical Assignment' => 'Сравнение - Препарат',
+    'Compare Chemical Assignments' => 'Сравнения - Препараты',
+    'Create Compare Chemical Assignment' => 'Добавить препарат к сравнению',
+
+    'Compare Entomophage Assignment ID' => 'Сравнение - Энтомофаг',
+    'Compare Entomophage Assignment' => 'Сравнение - Энтомофаг',
+    'Compare Entomophage Assignments' => 'Сравнения - Энтомофаги',
+    'Create Compare Entomophage Assignment' => 'Добавить энтомофаг к сравнению',
 ];

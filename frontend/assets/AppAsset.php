@@ -2,6 +2,7 @@
 
 namespace frontend\assets;
 
+use dmstr\web\AdminLteAsset;
 use yii\web\AssetBundle;
 
 /**
@@ -19,5 +20,6 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        AdminLteAsset::class,
     ];
 }

@@ -50,6 +50,11 @@ use kartik\icons\Icon;
                     ['label' => Yii::t('app','Entomophages'), 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app','Entomophages'), 'icon' => 'icofont icofont-bug', 'url' => ['/entomophage/index']],
 
+                    ['label' => Yii::t('app','Compares'), 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app','Compares'), 'icon' => 'fa fa-balance-scale', 'url' => ['/compare/index']],
+                    ['label' => Yii::t('app','Compare Chemical Assignments'), 'icon' => 'fa fa-book', 'url' => ['/compare-chemical-assignment/index']],
+                    ['label' => Yii::t('app','Compare Entomophage Assignments'), 'icon' => 'fa fa-book', 'url' => ['/compare-entomophage-assignment/index']],
+
                     ['label' => Yii::t('app','Lookups'), 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app','Matches'), 'icon' => 'fa fa-book', 'url' => ['/match/index']],
 

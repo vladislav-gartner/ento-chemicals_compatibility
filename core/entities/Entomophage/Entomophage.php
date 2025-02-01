@@ -3,6 +3,10 @@
 namespace core\entities\Entomophage;
 
 use Yii;
+use core\entities\Compare\Compare;
+use core\entities\Compare\CompareEntomophageAssignment;
+use core\entities\Compare\CompareEntomophageAssignmentQuery;
+use core\entities\Compare\CompareQuery;
 use core\entities\Match\ChemicalEntomophageMatch;
 use core\entities\Match\ChemicalEntomophageMatchQuery;
 use core\traits\ModelTrait;
@@ -16,6 +20,8 @@ use yii\db\ActiveRecord;
  * @property int $status
  *
  * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
+ * @property CompareEntomophageAssignment[] $compareEntomophageAssignments
+ * @property Compare[] $compares
  */
 class Entomophage extends ActiveRecord
 {
@@ -61,6 +67,16 @@ class Entomophage extends ActiveRecord
     public function getChemicalEntomophageMatches()
     {
         return $this->hasMany(ChemicalEntomophageMatch::className(), ['entomophage_id' => 'id']);
+    }
+
+    public function getCompareEntomophageAssignments()
+    {
+        return $this->hasMany(CompareEntomophageAssignment::className(), ['entomophage_id' => 'id']);
+    }
+
+    public function getCompares()
+    {
+        return $this->hasMany(Compare::className(), ['id' => 'compare_id'])->viaTable('compare_entomophage_assignment', ['entomophage_id' => 'id']);
     }
 
     public static function find(): EntomophageQuery

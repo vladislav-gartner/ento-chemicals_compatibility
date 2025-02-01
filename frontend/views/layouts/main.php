@@ -37,15 +37,15 @@ if (!Yii::$app->user->isGuest){
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
+
 <?php $this->head() ?>
 
 </head>
 
-<!-- ADD THE CLASS layout-boxed TO GET A BOXED LAYOUT -->
-<body class="hold-transition layout-fixed sidebar-mini skin-green-light <?= $addClass ?>">
+<body class="layout-top-nav skin-green-light <?= $addClass ?>">
 <?php $this->beginBody() ?>
 
-<!-- Site wrapper -->
 <div class="wrapper">
 
     <?= $this->render(
@@ -53,22 +53,21 @@ if (!Yii::$app->user->isGuest){
         ['directoryAsset' => $directoryAsset]
     ) ?>
 
-    <?php if ($user): ?>
-
+    <div class="container-fluid">
         <?= $this->render(
-            'left.php',
-            ['directoryAsset' => $directoryAsset]
+            'content.php',
+            ['content' => $content, 'directoryAsset' => $directoryAsset]
         ) ?>
+    </div>
 
-    <?php endif; ?>
+    <aside class="right-control-sidebar control-sidebar-dark">
+        <div class="sidebar-content">
+            <h3>Условные обозначения</h3>
 
-    <?= $this->render(
-        'content.php',
-        ['content' => $content, 'directoryAsset' => $directoryAsset]
-    ) ?>
+        </div>
+    </aside>
 
 </div>
-<!-- ./wrapper -->
 
 <?php $this->endBody() ?>
 </body>

@@ -54,4 +54,9 @@ class ChemicalIngredientAssignmentRepository
     {
         ChemicalIngredientAssignment::deleteAll();
     }
+
+    public function truncate(): void
+    {
+        ChemicalIngredientAssignment::clearAutoIncrement();
+    }
 }

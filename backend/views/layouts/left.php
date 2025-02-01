@@ -53,6 +53,9 @@ use kartik\icons\Icon;
                     ['label' => Yii::t('app','Lookups'), 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app','Matches'), 'icon' => 'fa fa-book', 'url' => ['/match/index']],
 
+                    ['label' => 'Обработчики', 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app','Import'), 'icon' => 'icofont icofont-automation', 'url' => ['/import/index']],
+
                 ], $menus)
             ]
         ) ?>

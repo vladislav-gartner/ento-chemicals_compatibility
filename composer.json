@@ -44,6 +44,7 @@
         "nette/php-generator": "*",
         "omgdef/yii2-multilingual-behavior": "~2",
         "paulzi/yii2-nested-sets": "*",
+        "phpoffice/phpexcel": "^1.8",
         "ruskid/yii2-csv-importer": "*",
         "sjaakp/yii2-illustrated-behavior": "*",
         "unclead/yii2-multiple-input": "*",

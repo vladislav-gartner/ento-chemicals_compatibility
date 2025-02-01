@@ -12,6 +12,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <span class="button-panel">
         <?= Html::a('<i class="fa fa-plus-square"></i> ' . Yii::t('app', 'Create Chemical Ingredient Assignment'), ['create'], ['class' => 'btn btn-success']) ?>
+        
+        <?= Html::a('<i class="fa fa-remove"></i> ' . Yii::t('app', 'Truncate All'), ['truncate'], [
+            'class' => 'btn btn-danger pull-right',
+            'data' => [
+                'confirm' => Yii::t('app', 'Are you sure you want to delete all items?'),
+                'method' => 'post',
+            ],
+        ]) ?>
     </span>
 
     <div class="box">

@@ -132,6 +132,21 @@ class ChemicalIngredientAssignmentController extends Controller
     }
 
     /**
+     * @return yii\web\Response
+     */
+    public function actionTruncate(): Response
+    {
+        try {
+            $this->service->truncate();
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Data cleared'));
+        } catch (\DomainException $e) {
+            Yii::$app->errorHandler->logException($e);
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+        return $this->redirect(['index']);
+    }
+
+    /**
      * Finds the ChemicalIngredientAssignment model based on its primary key value
      * @param integer $chemical_id
      * @param integer $ingredient_id

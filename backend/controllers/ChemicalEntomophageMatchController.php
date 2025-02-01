@@ -62,12 +62,14 @@ class ChemicalEntomophageMatchController extends Controller
     /**
      * Displays a single ChemicalEntomophageMatch model.
      * @param integer $id
+     * @param integer $chemical_id
+     * @param integer $entomophage_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id): string
+    public function actionView($id, $chemical_id, $entomophage_id): string
     {
-        return $this->render('view', ['model' => $this->findModel($id)]);
+        return $this->render('view', ['model' => $this->findModel($id, $chemical_id, $entomophage_id)]);
     }
 
     /**
@@ -92,17 +94,19 @@ class ChemicalEntomophageMatchController extends Controller
     /**
      * Updates an existing ChemicalEntomophageMatch model.
      * @param integer $id
+     * @param integer $chemical_id
+     * @param integer $entomophage_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $chemical_id, $entomophage_id)
     {
-        $chemicalEntomophageMatch = $this->findModel($id);
+        $chemicalEntomophageMatch = $this->findModel($id, $chemical_id, $entomophage_id);
 
         $form = new ChemicalEntomophageMatchForm($chemicalEntomophageMatch);
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $this->service->edit($chemicalEntomophageMatch->id, $form);
+                $this->service->edit($chemicalEntomophageMatch->id, $chemicalEntomophageMatch->chemical_id, $chemicalEntomophageMatch->entomophage_id, $form);
                 return $this->redirect(['index']);
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
@@ -115,12 +119,29 @@ class ChemicalEntomophageMatchController extends Controller
     /**
      * Deletes an existing ChemicalEntomophageMatch model.
      * @param integer $id
+     * @param integer $chemical_id
+     * @param integer $entomophage_id
      * @return mixed
      */
-    public function actionDelete($id): Response
+    public function actionDelete($id, $chemical_id, $entomophage_id): Response
     {
         try {
-            $this->service->remove($id);
+            $this->service->remove($id, $chemical_id, $entomophage_id);
+        } catch (\DomainException $e) {
+            Yii::$app->errorHandler->logException($e);
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * @return yii\web\Response
+     */
+    public function actionTruncate(): Response
+    {
+        try {
+            $this->service->truncate();
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Data cleared'));
         } catch (\DomainException $e) {
             Yii::$app->errorHandler->logException($e);
             Yii::$app->session->setFlash('error', $e->getMessage());
@@ -131,12 +152,14 @@ class ChemicalEntomophageMatchController extends Controller
     /**
      * Finds the ChemicalEntomophageMatch model based on its primary key value
      * @param integer $id
+     * @param integer $chemical_id
+     * @param integer $entomophage_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function findModel($id): ChemicalEntomophageMatch
+    public function findModel($id, $chemical_id, $entomophage_id): ChemicalEntomophageMatch
     {
-        if (($model = ChemicalEntomophageMatch::findOne($id)) !== null) {
+        if (($model = ChemicalEntomophageMatch::findOne(['id' => $id, 'chemical_id' => $chemical_id, 'entomophage_id' => $entomophage_id])) !== null) {
             return $model;
         }
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));

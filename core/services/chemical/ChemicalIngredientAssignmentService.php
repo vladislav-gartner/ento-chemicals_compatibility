@@ -69,6 +69,11 @@ class ChemicalIngredientAssignmentService
         $this->chemicalIngredientAssignments->deleteAll();
     }
 
+    public function truncate(): void
+    {
+        $this->chemicalIngredientAssignments->truncate();
+    }
+
     public function getRepository(): ChemicalIngredientAssignmentRepository
     {
         return $this->chemicalIngredientAssignments;

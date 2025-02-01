@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="chemical-entomophage-match-view">
 
     <p>
-        <?= Html::a('<i class="fa fa-edit"></i> ' . Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('<i class="fa fa-remove"></i> ' . Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a('<i class="fa fa-edit"></i> ' . Yii::t('app', 'Update'), ['update', 'id' => $model->id, 'chemical_id' => $model->chemical_id, 'entomophage_id' => $model->entomophage_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<i class="fa fa-remove"></i> ' . Yii::t('app', 'Delete'), ['delete', 'id' => $model->id, 'chemical_id' => $model->chemical_id, 'entomophage_id' => $model->entomophage_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),

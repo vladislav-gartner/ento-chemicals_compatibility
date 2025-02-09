@@ -323,4 +323,7 @@ return [
     'Compare Entomophage Assignment' => 'Сравнение - Энтомофаг',
     'Compare Entomophage Assignments' => 'Сравнения - Энтомофаги',
     'Create Compare Entomophage Assignment' => 'Добавить энтомофаг к сравнению',
+
+    'Fio' => 'Имя Фамилия',
+    'Company' => 'Компания',
 ];

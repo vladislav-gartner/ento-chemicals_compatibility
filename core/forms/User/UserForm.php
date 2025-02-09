@@ -17,8 +17,8 @@ use yiidreamteam\upload\ImageUploadBehavior;
 class UserForm extends Yii\base\Model
 {
     public $username;
-    public $first_name;
-    public $last_name;
+    public $fio;
+    public $company;
     public $image;
     public $auth_key;
     public $password_hash;
@@ -41,8 +41,8 @@ class UserForm extends Yii\base\Model
     {
         if ($user) {
             $this->username = $user->username;
-            $this->first_name = $user->first_name;
-            $this->last_name = $user->last_name;
+            $this->fio = $user->fio;
+            $this->company = $user->company;
             $this->image = $user->image;
             $this->auth_key = $user->auth_key;
             $this->password_hash = $user->password_hash;
@@ -67,7 +67,7 @@ class UserForm extends Yii\base\Model
     {
         return [
             [['status', 'created_at', 'updated_at', 'is_banned', 'activity_at'], 'integer'],
-            [['username', 'first_name', 'last_name', 'password_hash', 'password_reset_token', 'email', 'email_confirm_token'], 'string', 'max' => 255],
+            [['username', 'fio', 'company', 'password_hash', 'password_reset_token', 'email', 'email_confirm_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['email'], 'unique', 'filter' => $this->_user ? ['<>', 'id', $this->_user->id] : null, ],
             [['username'], 'unique'],
@@ -82,8 +82,8 @@ class UserForm extends Yii\base\Model
         return [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
-            'first_name' => Yii::t('app', 'First Name'),
-            'last_name' => Yii::t('app', 'Last Name'),
+            'fio' => Yii::t('app', 'Fio'),
+            'company' => Yii::t('app', 'Company'),
             'image' => Yii::t('app', 'Image'),
             'auth_key' => Yii::t('app', 'Auth Key'),
             'password_hash' => Yii::t('app', 'Password Hash'),

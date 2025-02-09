@@ -39,12 +39,20 @@ class UserService
         return $this->users->find($id);
     }
 
+    /**
+     * @return User[]
+     */
+    public function findAll(): array
+    {
+        return $this->users->findAll();
+    }
+
     public function create(UserForm $form): User
     {
         $user = User::create(
             $form->username,
-            $form->first_name,
-            $form->last_name,
+            $form->fio,
+            $form->company,
             $form->image,
             $form->email,
             $form->is_banned,
@@ -62,8 +70,8 @@ class UserService
         $user = $this->users->get($id);
         $user->edit(
             $form->username,
-            $form->first_name,
-            $form->last_name,
+            $form->fio,
+            $form->company,
             $form->image,
             $form->email,
             $form->is_banned,
@@ -84,5 +92,10 @@ class UserService
     public function removeAll(): void
     {
         $this->users->deleteAll();
+    }
+
+    public function getRepository(): UserRepository
+    {
+        return $this->users;
     }
 }

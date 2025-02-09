@@ -26,14 +26,11 @@ $this->title = '';
 
                         <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                            <?= $form->field($model, 'first_name')->label(false)
-                                ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('first_name')]) ?>
+                            <?= $form->field($model, 'fio')->label(false)
+                                ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('fio')]) ?>
 
-                            <?= $form->field($model, 'last_name')->label(false)
-                                ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('last_name')]) ?>
-
-                            <?= $form->field($model, 'username')->label(false)
-                                ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('username')]) ?>
+                            <?= $form->field($model, 'company')->label(false)
+                                ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('company')]) ?>
 
                             <?= $form->field($model, 'email')->label(false)
                                 ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('email')]) ?>

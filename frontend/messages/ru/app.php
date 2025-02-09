@@ -50,6 +50,7 @@ return [
     'Enter your last name' => 'Укажите вашу фамилию',
 
     'Enter the login and password' => 'Для входа укажите логин и пароль.',
+    'Enter the Email and password' => 'Для входа укажите Email и пароль.',
 
     'User ID' => 'Пользователь',
     'User' => 'Пользователь',
@@ -107,4 +108,7 @@ return [
     'Compare Entomophage Assignment' => 'Сравнение - Энтомофаг',
     'Compare Entomophage Assignments' => 'Сравнения - Энтомофаги',
     'Create Compare Entomophage Assignment' => 'Добавить энтомофаг к сравнению',
+
+    'Fio' => 'Имя Фамилия',
+    'Company' => 'Компания',
 ];

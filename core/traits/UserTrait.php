@@ -17,16 +17,16 @@ trait UserTrait
         string $username,
         string $email,
         string $password,
-        $first_name = null,
-        $last_name = null,
+        $fio = null,
+        $company = null,
         $is_banned = 0
     ): self
     {
         $user = new static();
         $user->username = $username;
         $user->email = $email;
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
+        $user->fio = $fio;
+        $user->company = $company;
         $user->setPassword(!empty($password) ? $password : Yii::$app->security->generateRandomString());
         $user->created_at = time();
         $user->status = self::STATUS_ACTIVE;
@@ -38,16 +38,16 @@ trait UserTrait
     public function editMinimal(
         string $username,
         string $email,
-        $first_name,
-        $last_name,
+        $fio,
+        $company,
         $image,
         $is_banned = 0
     ): self
     {
         $this->username = $username;
         $this->email = $email;
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
+        $this->fio = $fio;
+        $this->company = $company;
         $this->image = $image;
         $this->is_banned = $is_banned;
         $this->updated_at = time();
@@ -65,12 +65,12 @@ trait UserTrait
     /**
      * @throws Exception
      */
-    public static function signup(string $username, string $email, string $password, $first_name, $last_name): self
+    public static function signup(string $username, string $email, string $password, $fio, $company): self
     {
         $user = new static();
         $user->username = $username;
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
+        $user->fio = $fio;
+        $user->company = $company;
         $user->email = $email;
         $user->setPassword($password);
         $user->created_at = time();
@@ -82,12 +82,12 @@ trait UserTrait
     /**
      * @throws Exception
      */
-    public static function requestSignup(string $username, string $email, string $password, $first_name, $last_name): self
+    public static function requestSignup(string $username, string $email, string $password, $fio, $company): self
     {
         $user = new static();
         $user->username = $username;
-        $user->first_name = $first_name;
-        $user->last_name = $last_name;
+        $user->fio = $fio;
+        $user->company = $company;
         $user->email = $email;
         $user->setPassword($password);
         $user->created_at = time();

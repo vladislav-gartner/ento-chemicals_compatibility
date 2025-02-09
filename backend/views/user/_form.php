@@ -20,8 +20,8 @@ use yii\bootstrap\ActiveForm;
 
         <fieldset class="section" id="general">
             <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
-            <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
-            <?= $form->field($model, 'last_name')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
+            <?= $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'image')->fileInput() ?>
 

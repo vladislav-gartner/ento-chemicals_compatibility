@@ -13,7 +13,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'status', 'is_banned'], 'integer'],
-            [['username', 'first_name', 'last_name', 'email'], 'safe'],
+            [['username', 'fio', 'company', 'email'], 'safe'],
             [['role'], 'safe'],
             [['date_from', 'date_to'], 'date', 'format' => 'php:Y-m-d'],
         ];

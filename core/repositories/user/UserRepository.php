@@ -18,7 +18,15 @@ class UserRepository
 
     public function find($id): ?User
     {
-        return User::findOne($id);
+        return User::find()->andWhere(['id' => $id])->one();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findAll(): array
+    {
+        return User::find()->all();
     }
 
     public function save(User $user): void

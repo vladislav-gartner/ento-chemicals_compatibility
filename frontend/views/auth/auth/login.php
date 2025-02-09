@@ -22,12 +22,12 @@ $this->title = '';
                     </div>
 
                     <div class="login-box-body">
-                        <h4 class="login-box-msg"><?=Yii::t('app','Enter the login and password')?></h4>
+                        <h4 class="login-box-msg"><?=Yii::t('app','Enter the Email and password')?></h4>
 
                         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                        <?= $form->field($model, 'username')->label(false)
-                            ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('login')]) ?>
+                        <?= $form->field($model, 'email')->label(false)
+                            ->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('email')]) ?>
 
                         <?= $form->field($model, 'password', [
                             'options' => ['class' => 'form-group has-feedback'],

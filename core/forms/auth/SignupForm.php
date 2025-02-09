@@ -13,8 +13,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-    public $first_name;
-    public $last_name;
+    public $fio;
+    public $company;
     public $password_repeat;
 
     /**
@@ -23,19 +23,14 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => User::class, 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => User::class, 'message' => 'This email address has already been taken.'],
 
-            ['first_name', 'required'],
-            ['last_name', 'required'],
+            ['fio', 'required'],
+            ['company', 'required'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
@@ -50,8 +45,8 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'first_name' => Yii::t('app', 'First Name'),
-            'last_name' => Yii::t('app', 'Last Name'),
+            'fio' => Yii::t('app', 'Fio'),
+            'company' => Yii::t('app', 'Company'),
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
             'password' => Yii::t('app', 'Password'),

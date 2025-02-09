@@ -19,7 +19,7 @@ class UserController extends Controller
     use UserControllerTrait;
 
     /** @var UserService service */
-    private $service;
+    public $service;
 
     public function actions(): array
     {

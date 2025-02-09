@@ -18,8 +18,8 @@ class UserEditForm extends Model
 {
     public $username;
     public $email;
-    public $first_name;
-    public $last_name;
+    public $fio;
+    public $company;
     public $image;
     public $role;
     public $is_banned;
@@ -30,8 +30,8 @@ class UserEditForm extends Model
     {
         $this->username = $user->username;
         $this->email = $user->email;
-        $this->first_name = $user->first_name;
-        $this->last_name = $user->last_name;
+        $this->fio = $user->fio;
+        $this->company = $user->company;
         $this->image = $user->image;
         $roles = Yii::$app->authManager->getRolesByUser($user->id);
         $this->role = $roles ? reset($roles)->name : null;
@@ -46,7 +46,7 @@ class UserEditForm extends Model
             [['username', 'email', 'role'], 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            [['first_name', 'last_name'],  'string', 'max' => 255],
+            [['fio', 'company'],  'string', 'max' => 255],
             ['image', 'file', 'extensions' => 'jpg, jpeg, png'],
             [['username', 'email'], 'unique', 'targetClass' => User::class, 'filter' => ['<>', 'id', $this->_user->id]],
             [['is_banned'], 'integer'],
@@ -61,8 +61,8 @@ class UserEditForm extends Model
         return [
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
-            'first_name' => Yii::t('app', 'First Name'),
-            'last_name' => Yii::t('app', 'Last Name'),
+            'fio' => Yii::t('app', 'Fio'),
+            'company' => Yii::t('app', 'Company'),
             'phone' => Yii::t('app', 'Phone'),
             'password' => Yii::t('app', 'Password'),
             'role' => Yii::t('app', 'Role'),

@@ -20,8 +20,8 @@ class UserCreateForm extends Model
     public $username;
     public $email;
     public $password;
-    public $first_name;
-    public $last_name;
+    public $fio;
+    public $company;
     public $role;
     public $is_banned;
 
@@ -32,7 +32,7 @@ class UserCreateForm extends Model
             ['email', 'email'],
             [['username', 'email'], 'string', 'max' => 255],
             [['username', 'email'], 'unique', 'targetClass' => User::class],
-            [['first_name', 'last_name'],  'string', 'max' => 255],
+            [['fio', 'company'],  'string', 'max' => 255],
             [['is_banned'], 'integer'],
             ['password', 'string', 'min' => 6],
         ];
@@ -47,8 +47,8 @@ class UserCreateForm extends Model
             'username' => Yii::t('app', 'Username'),
             'email' => Yii::t('app', 'Email'),
             'password' => Yii::t('app', 'Password'),
-            'first_name' => Yii::t('app', 'First Name'),
-            'last_name' => Yii::t('app', 'Last Name'),
+            'fio' => Yii::t('app', 'Fio'),
+            'company' => Yii::t('app', 'Company'),
             'role' => Yii::t('app', 'Role'),
             'is_banned' => Yii::t('app', 'Is Banned'),
         ];

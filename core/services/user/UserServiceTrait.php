@@ -17,8 +17,8 @@ trait UserServiceTrait
             $form->username,
             $form->email,
             $form->password,
-            $form->first_name,
-            $form->last_name,
+            $form->fio,
+            $form->company,
             $form->is_banned
         );
         $this->transaction->wrap(function () use ($user, $form) {
@@ -34,8 +34,8 @@ trait UserServiceTrait
         $user->editMinimal(
             $form->username,
             $form->email,
-            $form->first_name,
-            $form->last_name,
+            $form->fio,
+            $form->company,
             $form->image,
             $form->is_banned
         );

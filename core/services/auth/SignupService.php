@@ -28,11 +28,11 @@ class SignupService
     public function signupLogin(SignupForm $form): User
     {
         $user = User::signup(
-            $form->username,
+            $form->email,
             $form->email,
             $form->password,
-            $form->first_name,
-            $form->last_name
+            $form->fio,
+            $form->company
         );
 
         $this->transaction->wrap(function () use ($user) {
@@ -46,11 +46,11 @@ class SignupService
     public function signup(SignupForm $form): void
     {
         $user = User::requestSignup(
-            $form->username,
+            $form->email,
             $form->email,
             $form->password,
-            $form->first_name,
-            $form->last_name
+            $form->fio,
+            $form->company
         );
 
         $this->transaction->wrap(function () use ($user) {

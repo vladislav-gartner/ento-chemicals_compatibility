@@ -27,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'common\components\SIDColumn'],
                     ['class' => 'common\components\UserCreatedFilterColumn', 'searchModel' => $searchModel],
                     ['class' => 'common\components\UserUsernameColumn'],
-                    'first_name',
-                    'last_name',
+                    'fio',
+                    'company',
                     [
                         'attribute' => 'image',
                         'value' => function ($model) {

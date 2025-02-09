@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = 'Update';
 
                 <?= $form->field($model, 'email')->textInput(['maxLength' => true]) ?>
 
-                <?= $form->field($model, 'first_name')->textInput(['maxLength' => true]) ?>
+                <?= $form->field($model, 'fio')->textInput(['maxLength' => true]) ?>
 
-                <?= $form->field($model, 'last_name')->textInput(['maxLength' => true]) ?>
+                <?= $form->field($model, 'company')->textInput(['maxLength' => true]) ?>
 
                 <?= $form->field($model, 'is_banned')->checkbox() ?>
 

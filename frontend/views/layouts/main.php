@@ -62,10 +62,86 @@ if (!Yii::$app->user->isGuest){
 
     <aside class="right-control-sidebar control-sidebar-dark">
         <div class="sidebar-content">
-            <h3>Условные обозначения</h3>
-
+            <a href="#" data-toggle="modal" data-target="#myModal"><h3>Условные обозначения</h3></a>
         </div>
     </aside>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title text-center" id="myModalLabel">Условные обозначения</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row content-container">
+                        <div class="col-md-2">
+                            <span class="full-width-label label label-success">Совместим</span>
+                        </div>
+                        <div class="col-md-10">
+                            <p>
+                                Препарат рекомендован для применения в интегрированной системе защиты, можно без опасений сочетать с энтомофагами
+                                (условный урон популяции полезных насекомых или клещей менее 25%)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row content-container">
+                        <div class="col-md-2">
+                            <span class="full-width-label label label-warning">Частично совместим</span>
+                        </div>
+                        <div class="col-md-10">
+                            <p>
+                                Препарат рекомендован для применения в интегрированной системе защиты, но имеет влияние на популяцию энтомофагов
+                                (условный возможный урон популяции полезных насекомых или клещей варьируется в пределах 50-75%, но популяция быстро
+                                восстанавливается при наличии кормовой базы)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row content-container">
+                        <div class="col-md-2">
+                            <span class="full-width-label label label-danger">Несовместим</span>
+                        </div>
+                        <div class="col-md-10">
+                            <p>
+                                Препарат не рекомендован для использования совместно с энтомофагами (урон 90-100% с длительным периодом распада препарата)
+                                Препарат требует дополнительных наблюдений, применять с крайней осторожностью на небольших участках
+                                Совместимость препаратов и энтомофагов носит условный характер.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row content-container">
+                        <div class="col-md-2">
+                            <span class="full-width-label label label-default">Эффект не известен</span>
+                        </div>
+                        <div class="col-md-10">
+                            <p>
+                                Рекомендуем всегда консультироваться с нашими специалистами и актуализировать данные
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="row content-container">
+                        <div class="col-md-12">
+                            <h4 class="text-center" >Совместимость препаратов и энтомофагов носит условный характер.</h4>
+                        </div>
+                    </div>
+
+                    <div class="row content-container">
+                        <div class="col-md-12">
+                            <p class="text-center" >Рекомендуем всегда консультироваться с нашими специалистами и актуализировать данные.</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 

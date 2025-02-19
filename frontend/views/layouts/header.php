@@ -28,7 +28,7 @@ if (!Yii::$app->user->isGuest) {
 
                 <?php
                 $menuItems = [
-                    ['label' => Yii::t('app','Home'), 'url' => ['/site/index']],
+//                    ['label' => Yii::t('app','Home'), 'url' => ['/site/index']],
                     ['label' => Yii::t('app','Compares'), 'url' => ['/compare/index']],
                 ];
                 if (Yii::$app->user->isGuest) {

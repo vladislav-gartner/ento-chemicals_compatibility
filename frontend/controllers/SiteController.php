@@ -32,6 +32,8 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest){
             $this->currentUser = Yii::$app->user->identity->getUser();
         }
+
+        return $this->redirect('compare/index');
     }
 
     public function actionIndex(): string

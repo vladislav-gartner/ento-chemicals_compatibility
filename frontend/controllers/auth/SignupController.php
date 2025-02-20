@@ -66,7 +66,7 @@ class SignupController extends Controller
     {
         try {
             $this->service->confirm($token);
-            Yii::$app->session->setFlash('success', 'Your email is confirmed.');
+            Yii::$app->session->setFlash('success', Yii::t('auth', 'Your email is confirmed.'));
             return $this->redirect(['auth/auth/login']);
         } catch (\DomainException $e) {
             Yii::$app->errorHandler->logException($e);

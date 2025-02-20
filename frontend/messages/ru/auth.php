@@ -31,4 +31,6 @@ return [
     'Network is already signed up.' => 'Социальная сеть уже авторизована.',
     'Attach social network:' => 'Прикрепить социальную сеть:',
 
+    'Your email is confirmed.' => 'Ваш адрес электронной почты подтвержден.',
+
 ];

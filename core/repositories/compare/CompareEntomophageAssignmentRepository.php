@@ -27,12 +27,11 @@ class CompareEntomophageAssignmentRepository
         return CompareEntomophageAssignment::find()->all();
     }
 
-    public function findByFuture($compare_id, $entomophage_id, $name): ?CompareEntomophageAssignment
+    public function findByFuture($compare_id, $entomophage_id): ?CompareEntomophageAssignment
     {
         return CompareEntomophageAssignment::findOne([
             'compare_id' => $compare_id,
             'entomophage_id' => $entomophage_id,
-            'name' => $name,
         ],);
     }
 

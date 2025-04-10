@@ -21,7 +21,7 @@ use yii\bootstrap\ActiveForm;
         <fieldset class="section" id="general">
             <?= $form->field($model, 'compare_id')->dropdownList(
                     yii\helpers\ArrayHelper::merge(['0' => 'Выбрать из списка'],
-                    \core\entities\Compare\Compare::find()->active()->select(['id'])->indexBy('id')->column())
+                    \core\entities\Compare\Compare::find()->select(['id'])->indexBy('id')->column())
             ) ?>
             <?= $form->field($model, 'entomophage_id')->dropdownList(
                     yii\helpers\ArrayHelper::merge(['0' => 'Выбрать из списка'],

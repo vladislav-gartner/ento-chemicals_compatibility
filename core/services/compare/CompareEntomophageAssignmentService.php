@@ -25,9 +25,9 @@ class CompareEntomophageAssignmentService
         return $this->compareEntomophageAssignments->find($compare_id, $entomophage_id);
     }
 
-    public function findByFuture($compare_id, $entomophage_id, $name): ?CompareEntomophageAssignment
+    public function findByFuture($compare_id, $entomophage_id): ?CompareEntomophageAssignment
     {
-        return $this->compareEntomophageAssignments->findByFuture($compare_id, $entomophage_id, $name);
+        return $this->compareEntomophageAssignments->findByFuture($compare_id, $entomophage_id);
     }
 
     /**

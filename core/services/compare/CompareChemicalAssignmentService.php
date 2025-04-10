@@ -25,9 +25,9 @@ class CompareChemicalAssignmentService
         return $this->compareChemicalAssignments->find($compare_id, $chemical_id);
     }
 
-    public function findByFuture($compare_id, $chemical_id, $name): ?CompareChemicalAssignment
+    public function findByFuture($compare_id, $chemical_id): ?CompareChemicalAssignment
     {
-        return $this->compareChemicalAssignments->findByFuture($compare_id, $chemical_id, $name);
+        return $this->compareChemicalAssignments->findByFuture($compare_id, $chemical_id);
     }
 
     /**

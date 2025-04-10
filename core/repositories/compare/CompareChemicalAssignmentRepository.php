@@ -27,12 +27,11 @@ class CompareChemicalAssignmentRepository
         return CompareChemicalAssignment::find()->all();
     }
 
-    public function findByFuture($compare_id, $chemical_id, $name): ?CompareChemicalAssignment
+    public function findByFuture($compare_id, $chemical_id): ?CompareChemicalAssignment
     {
         return CompareChemicalAssignment::findOne([
             'compare_id' => $compare_id,
             'chemical_id' => $chemical_id,
-            'name' => $name,
         ],);
     }
 

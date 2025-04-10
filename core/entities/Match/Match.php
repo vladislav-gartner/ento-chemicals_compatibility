@@ -12,6 +12,8 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property string $name
  * @property string $icon_class
+ *
+ * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
  */
 class Match extends ActiveRecord
 {
@@ -51,6 +53,11 @@ class Match extends ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'icon_class' => Yii::t('app', 'Icon Class'),
         ];
+    }
+
+    public function getChemicalEntomophageMatches()
+    {
+        return $this->hasMany(ChemicalEntomophageMatch::className(), ['match_id' => 'id']);
     }
 
     public static function find(): MatchQuery

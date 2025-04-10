@@ -27,12 +27,11 @@ class ChemicalIngredientAssignmentRepository
         return ChemicalIngredientAssignment::find()->all();
     }
 
-    public function findByFuture($chemical_id, $ingredient_id, $name): ?ChemicalIngredientAssignment
+    public function findByFuture($chemical_id, $ingredient_id): ?ChemicalIngredientAssignment
     {
         return ChemicalIngredientAssignment::findOne([
             'chemical_id' => $chemical_id,
             'ingredient_id' => $ingredient_id,
-            'name' => $name,
         ],);
     }
 

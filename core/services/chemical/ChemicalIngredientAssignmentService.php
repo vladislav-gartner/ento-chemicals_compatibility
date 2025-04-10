@@ -25,9 +25,9 @@ class ChemicalIngredientAssignmentService
         return $this->chemicalIngredientAssignments->find($chemical_id, $ingredient_id);
     }
 
-    public function findByFuture($chemical_id, $ingredient_id, $name): ?ChemicalIngredientAssignment
+    public function findByFuture($chemical_id, $ingredient_id): ?ChemicalIngredientAssignment
     {
-        return $this->chemicalIngredientAssignments->findByFuture($chemical_id, $ingredient_id, $name);
+        return $this->chemicalIngredientAssignments->findByFuture($chemical_id, $ingredient_id);
     }
 
     /**

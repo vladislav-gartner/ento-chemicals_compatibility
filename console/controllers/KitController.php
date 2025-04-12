@@ -33,7 +33,8 @@ class KitController extends Controller
         '@core/entities/Property.php' => '/core/entities/Property.php',
         '@core/forms/PropertyForm.php' => '/core/forms/PropertyForm.php',
         '@core/traits/EntityServiceTrait.php' => '/core/traits/EntityServiceTrait.php',
-        '@core/traits/StatusEntityServiceTrait.php' => '/core/traits/StatusEntityServiceTrait.php'
+        '@core/traits/StatusEntityServiceTrait.php' => '/core/traits/StatusEntityServiceTrait.php',
+        '@backend/config/main-local.php' => '/backend/config/main-local.php',
     ];
 
     /**

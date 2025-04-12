@@ -45,7 +45,7 @@ trait EntityAssignmentRepositoryTrait
     public function getByEntityWithSubmodel($entityClass, $submodelClass): EntityAssignment
     {
         if (!$entityAssignment = EntityAssignment::findOne(['entity' => $entityClass, 'submodel' => $submodelClass])) {
-            throw new \core\repositories\NotFoundException('EntityAssignment is not found.');
+            throw new \core\repositories\NotFoundException("EntityAssignment is not found. [entityClass:{$entityClass}, submodel:{$submodelClass}]");
         }
         return $entityAssignment;
     }

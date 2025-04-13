@@ -3,12 +3,12 @@
 namespace core\entities\Chemical;
 
 use Yii;
-use core\entities\Ingredient\Ingredient;
-use core\entities\Ingredient\IngredientQuery;
 use core\entities\Compare\Compare;
 use core\entities\Compare\CompareChemicalAssignment;
 use core\entities\Compare\CompareChemicalAssignmentQuery;
 use core\entities\Compare\CompareQuery;
+use core\entities\Ingredient\Ingredient;
+use core\entities\Ingredient\IngredientQuery;
 use core\entities\Match\ChemicalEntomophageMatch;
 use core\entities\Match\ChemicalEntomophageMatchQuery;
 use core\traits\ModelTrait;
@@ -23,9 +23,9 @@ use yii\db\ActiveRecord;
  *
  * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
  * @property ChemicalIngredientAssignment[] $chemicalIngredientAssignments
+ * @property Ingredient[] $ingredients
  * @property CompareChemicalAssignment[] $compareChemicalAssignments
  * @property Compare[] $compares
- * @property Ingredient[] $ingredients
  */
 class Chemical extends ActiveRecord
 {
@@ -88,14 +88,14 @@ class Chemical extends ActiveRecord
         return $this->hasMany(ChemicalIngredientAssignment::className(), ['chemical_id' => 'id']);
     }
 
-    public function getCompareChemicalAssignments()
-    {
-        return $this->hasMany(CompareChemicalAssignment::className(), ['chemical_id' => 'id']);
-    }
-
     public function getIngredients()
     {
         return $this->hasMany(Ingredient::className(), ['id' => 'ingredient_id'])->viaTable('chemical_ingredient_assignment', ['chemical_id' => 'id']);
+    }
+
+    public function getCompareChemicalAssignments()
+    {
+        return $this->hasMany(CompareChemicalAssignment::className(), ['chemical_id' => 'id']);
     }
 
     public function getCompares()

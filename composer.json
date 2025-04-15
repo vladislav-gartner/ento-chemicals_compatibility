@@ -69,6 +69,7 @@
         "codeception/verify": "~0.5.0 || ~1.1.0",
         "electrolinux/phpquery": "*",
         "insolita/yii2-migration-generator": "*",
+        "league/climate": "*",
         "sixlive/dotenv-editor": "*",
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "yiisoft/yii2-debug": "~2.1.0",

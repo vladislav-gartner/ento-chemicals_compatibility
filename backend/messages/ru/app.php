@@ -326,4 +326,14 @@ return [
 
     'Fio' => 'Имя Фамилия',
     'Company' => 'Компания',
+
+    'Chemical Popup ID' => 'Popup для препарата',
+    'Chemical Popup' => 'Popup для препарата',
+    'Chemical Popups' => 'Popup для препаратов',
+    'Create Chemical Popup' => 'Добавить Popup для препарата',
+
+    'Entomophage Popup ID' => 'Popup для энтомофага',
+    'Entomophage Popup' => 'Popup для энтомофага',
+    'Entomophage Popups' => 'Popup для энтомофагов',
+    'Create Entomophage Popup' => 'Добавить Popup для энтомофага',
 ];

@@ -4,12 +4,14 @@ namespace console\controllers;
 use yii\console\Controller;
 use yii\helpers\Console;
 use core\helpers\CommandHelper;
+use League\CLImate\CLImate;
 
 class MenuController extends Controller
 {
-    public function actionIndex()
+    private $lastCommand = null;
+
+    public function actionIndex(): void
     {
-        // Получаем список доступных команд через CommandHelper
         $commands = CommandHelper::getCommands(\Yii::getAlias('@console/controllers'));
 
         if (empty($commands)) {
@@ -17,7 +19,6 @@ class MenuController extends Controller
             return;
         }
 
-        // Создаем интерактивное меню
         while (true) {
             $this->clearScreen();
             echo "Доступные команды:\n";
@@ -29,12 +30,11 @@ class MenuController extends Controller
             }
             echo "0. Выход\n";
 
-            $selected = $this->select("Выберите команду:", array_merge(['0' => 'Выход'], $menuOptions));
-            if ($selected === '0') {
+            $selected = $this->selectWithEscape("Выберите команду:", array_merge(['0' => 'Выход'], $menuOptions));
+            if ($selected === null || $selected === '0') {
                 break;
             }
 
-            // Преобразуем строковый индекс обратно в числовой
             $commandIndex = (int)$selected - 1;
             if (!isset($commands[$commandIndex])) {
                 $this->stderr("Неверный выбор. Попробуйте снова.\n", Console::FG_RED);
@@ -50,52 +50,107 @@ class MenuController extends Controller
         }
     }
 
-    private function clearScreen()
+    private function clearScreen(): void
     {
         Console::clearScreen();
     }
 
-    private function selectAction($actions)
+    /**
+     * @param string $prompt
+     * @param array $options
+     * @return string|null
+     */
+    private function selectWithEscape(string $prompt, array $options): ?string
     {
-        echo "Доступные действия:\n";
-        $menuOptions = [];
-        foreach ($actions as $index => $action) {
-            $menuOptions[(string)($index + 1)] = $action;
-            echo ($index + 1) . ". " . $action . "\n";
-        }
-        echo "0. Назад\n";
+        $climate = new CLImate();
+        $climate->out($prompt . ' [' . implode(', ', array_keys($options)) . ']: ');
 
-        $selected = $this->select("Выберите действие:", array_merge(['0' => 'Назад'], $menuOptions));
-        if ($selected === '0') {
+        $input = $climate->input('')->prompt();
+
+        if ($input === "\x1B") {
             return null;
         }
 
-        // Преобразуем строковый индекс обратно в числовой
+        if (isset($options[$input])) {
+            return $input;
+        }
+
+        $climate->error("Неверный выбор. Попробуйте снова.");
+        return $this->selectWithEscape($prompt, $options);
+    }
+
+    /**
+     * @param array $actions
+     * @return string|null
+     */
+    private function selectAction(array $actions): ?string
+    {
+        $climate = new CLImate();
+        $climate->out("Доступные действия:\n");
+
+        $menuOptions = [];
+        foreach ($actions as $index => $action) {
+            $menuOptions[(string)($index + 1)] = $action;
+            $climate->out(($index + 1) . ". " . $action);
+        }
+        $climate->out("0. Назад");
+
+        $selected = $this->selectWithEscape("Выберите действие:", array_merge(['0' => 'Назад'], $menuOptions));
+        if ($selected === null || $selected === '0') {
+            return null;
+        }
+
         $selectedIndex = (int)$selected - 1;
         if (!isset($actions[$selectedIndex])) {
-            $this->stderr("Неверный выбор. Попробуйте снова.\n", Console::FG_RED);
+            $climate->error("Неверный выбор. Попробуйте снова.");
             return $this->selectAction($actions);
         }
 
         return $actions[$selectedIndex];
     }
 
-    private function runCommand($command, $action)
+    private function runCommand(string $command, string $action): void
     {
         $this->clearScreen();
         $this->stdout("Выполняется команда: {$command} {$action}\n", Console::FG_GREEN);
 
         try {
-            // Запускаем выбранную команду
             $this->run("{$command}/{$action}");
+            $this->lastCommand = [$command, $action];
         } catch (\Exception $e) {
             $this->stderr("Ошибка выполнения команды: " . $e->getMessage() . "\n", Console::FG_RED);
-            $this->stdout("Нажмите любую клавишу для продолжения...");
-            Console::stdin(); // Ждем нажатия клавиши
         }
 
         $this->stdout("\n");
-        $this->stdout("Нажмите любую клавишу для возврата в меню...");
-        Console::stdin(); // Ждем нажатия клавиши
+        $this->stdout("Нажмите Enter для повтора команды или q для возврата в меню...\n");
+
+        $this->handlePostCommandInput();
+    }
+
+    private function handlePostCommandInput(): void
+    {
+        $climate = new CLImate();
+        $input = $climate->input('')->prompt();
+
+        if ($input === '') {
+            $this->repeatLastCommand();
+        } elseif ($input === 'q') {
+            $this->exitToMainMenu();
+        } else {
+            $this->exitToMainMenu();
+        }
+    }
+
+    private function repeatLastCommand(): void
+    {
+        if ($this->lastCommand !== null) {
+            [$lastCommand, $lastAction] = $this->lastCommand;
+            $this->runCommand($lastCommand, $lastAction);
+        }
+    }
+
+    private function exitToMainMenu(): void
+    {
+        return;
     }
 }

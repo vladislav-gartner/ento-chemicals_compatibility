@@ -55,6 +55,10 @@ use kartik\icons\Icon;
                     ['label' => Yii::t('app','Compare Chemical Assignments'), 'icon' => 'fa fa-book', 'url' => ['/compare-chemical-assignment/index']],
                     ['label' => Yii::t('app','Compare Entomophage Assignments'), 'icon' => 'fa fa-book', 'url' => ['/compare-entomophage-assignment/index']],
 
+                    ['label' => Yii::t('app','Popups'), 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app','Chemical Popups'), 'icon' => 'icofont icofont-info-square', 'url' => ['/chemical-popup/index']],
+                    ['label' => Yii::t('app','Entomophage Popups'), 'icon' => 'icofont icofont-info-square', 'url' => ['/entomophage-popup/index']],
+
                     ['label' => Yii::t('app','Lookups'), 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app','Matches'), 'icon' => 'fa fa-book', 'url' => ['/match/index']],
 

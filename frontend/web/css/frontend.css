@@ -280,6 +280,43 @@ span.button-panel{
     background-color: var(--bg-success) !important;
 }
 
+.custom-icon-info-white {
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+    background-image: url('../img/info_white.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-right: 5px;
+}
+
+.custom-icon-info-green {
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+    background-image: url('../img/info_green.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-right: 5px;
+}
+
+.clickable-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+.clickable-icon:hover {
+    color: #fcf8e3;
+}
+
+.info .modal-body{
+    padding: 30px;
+}
+
 /*.main-header .navbar a,*/
 /*.main-header .navbar .dropdown-menu > li > a {*/
 /*    color: #ffffff !important;*/

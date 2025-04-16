@@ -3,6 +3,8 @@
 namespace core\entities\Chemical;
 
 use Yii;
+use core\entities\ChemicalPopup\ChemicalPopup;
+use core\entities\ChemicalPopup\ChemicalPopupQuery;
 use core\entities\Compare\Compare;
 use core\entities\Compare\CompareChemicalAssignment;
 use core\entities\Compare\CompareChemicalAssignmentQuery;
@@ -24,6 +26,7 @@ use yii\db\ActiveRecord;
  * @property ChemicalEntomophageMatch[] $chemicalEntomophageMatches
  * @property ChemicalIngredientAssignment[] $chemicalIngredientAssignments
  * @property Ingredient[] $ingredients
+ * @property ChemicalPopup $chemicalPopup
  * @property CompareChemicalAssignment[] $compareChemicalAssignments
  * @property Compare[] $compares
  */
@@ -91,6 +94,11 @@ class Chemical extends ActiveRecord
     public function getIngredients()
     {
         return $this->hasMany(Ingredient::className(), ['id' => 'ingredient_id'])->viaTable('chemical_ingredient_assignment', ['chemical_id' => 'id']);
+    }
+
+    public function getChemicalPopup()
+    {
+        return $this->hasOne(ChemicalPopup::className(), ['chemical_id' => 'id']);
     }
 
     public function getCompareChemicalAssignments()

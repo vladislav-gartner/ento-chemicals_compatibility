@@ -39,7 +39,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         	return $model->getChemical()->one()->name;
                         },
                     ],
-                    'content:ntext',
+                    [
+                        'attribute' => 'content',
+                        'value' => function ($model) {
+                        	return Yii::$app->formatter->asHtml(
+                                $model->content, [
+                                    'Attr.AllowedRel' => array('nofollow'),
+                                    'HTML.SafeObject' => true,
+                                    'Output.FlashCompat' => true,
+                                    'HTML.SafeIframe' => true,
+                                ]
+                            );
+                        },
+                        'format' => 'raw'
+                    ],
                     [
                         'attribute' => 'status',
                         'class' => \common\components\StatusColumn::class,

@@ -80,11 +80,11 @@ class ImportService extends BaseService
 
     public function importByUpload(UploadedFile $file): void
     {
-        $this->chemicalIngredientAssignmentService->truncate();
-        $this->chemicalEntomophageMatchService->truncate();
-
-        $this->entomophageService->truncate();
-        $this->chemicalService->truncate();
+//        $this->chemicalIngredientAssignmentService->truncate();
+//        $this->chemicalEntomophageMatchService->truncate();
+//
+//        $this->entomophageService->truncate();
+//        $this->chemicalService->truncate();
 
         $lines = $this->readFileXLSX($file->tempName);
 

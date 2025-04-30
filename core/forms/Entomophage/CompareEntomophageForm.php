@@ -38,7 +38,7 @@ class CompareEntomophageForm extends Model
     public function entomophagesList(): array
     {
         return ArrayHelper::map(
-            Entomophage::find()->active()->orderBy('name')->asArray()->all(),
+            Entomophage::find()->active()->orderBy(['name' => SORT_ASC])->asArray()->all(),
             'id', 'name'
         );
     }

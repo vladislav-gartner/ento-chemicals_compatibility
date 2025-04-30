@@ -38,7 +38,7 @@ class CompareChemicalForm extends Model
     public function chemicalsList(): array
     {
         return ArrayHelper::map(
-            Chemical::find()->active()->orderBy('name')->asArray()->all(),
+            Chemical::find()->active()->orderBy(['name' => SORT_ASC])->asArray()->all(),
             'id', 'name'
         );
     }

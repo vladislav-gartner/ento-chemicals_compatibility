@@ -12,6 +12,7 @@ use core\services\ingredient\IngredientService;
 use core\services\match\ChemicalEntomophageMatchService;
 use core\useCases\BaseService;
 use yii\web\UploadedFile;
+use function nspl\a\filter;
 
 
 class ImportService extends BaseService
@@ -57,6 +58,7 @@ class ImportService extends BaseService
         '-' => 2,
         '%' => 3,
         '?' => 4,
+        'empty' => 5
     ];
 
     public function __construct(
@@ -93,6 +95,10 @@ class ImportService extends BaseService
         $count = count($header) - 2;
         $entomophages = array_slice($header, 2, $count, true);
 
+        $entomophages = filter(function($v) {
+            return !empty($v);
+        }, $entomophages);
+
         $this->importChemical($lines, $header, $entomophages);
 
     }
@@ -119,6 +125,10 @@ class ImportService extends BaseService
 
                 $match = $line[$key];
                 $entomophage = $this->entomophageService->getOrInsert($entomophage, 1);
+
+                if (empty($match)){
+                    $match = 'empty';
+                }
 
                 $this->chemicalEntomophageMatchService->getOrInsert(
                     $chemical->id,
